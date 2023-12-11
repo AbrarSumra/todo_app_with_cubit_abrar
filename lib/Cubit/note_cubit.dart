@@ -26,4 +26,25 @@ class NoteCubit extends Cubit<NoteState> {
     List<NoteModel> arrNotes = await appDB.fetchNotes();
     emit(LoadedState(mData: arrNotes));
   }
+
+  Future<void> updateNote(NoteModel updateNote) async {
+    emit(LoadingState());
+
+    appDB.updateNote(updateNote);
+
+    List<NoteModel> arrNotes = await appDB.fetchNotes();
+    emit(LoadedState(mData: arrNotes));
+  }
+
+  void deleteNote(int id) async {
+    emit(LoadingState());
+
+    var check = await appDB.deleteNote(id);
+    if (check) {
+      List<NoteModel> arrNotes = await appDB.fetchNotes();
+      emit(LoadedState(mData: arrNotes));
+    } else {
+      emit(ErrorState(errorMsg: "Note not Deleted!!!"));
+    }
+  }
 }

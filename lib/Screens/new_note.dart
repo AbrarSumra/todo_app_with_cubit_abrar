@@ -87,12 +87,12 @@ class NewNoteScreen extends StatelessWidget {
                             descController.text.isNotEmpty) {
                           if (isUpdate) {
                             /// Update Note
-                            /*context.read<NoteProvider>().updateNote(NoteModel(
+                            context.read<NoteCubit>().updateNote(NoteModel(
                                   user_id: userId,
                                   note_Id: noteIndex,
                                   note_Title: titleController.text.toString(),
                                   note_Desc: descController.text.toString(),
-                                ));*/
+                                ));
                           } else {
                             /// Add Note
                             context.read<NoteCubit>().addNote(NoteModel(

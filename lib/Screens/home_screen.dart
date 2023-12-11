@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                               onPressed: () {
                                 showDialog(
                                   context: context,
-                                  builder: (context) {
+                                  builder: (_) {
                                     return AlertDialog(
                                       title: const Text("Delete?"),
                                       content: const Text(
@@ -111,9 +111,9 @@ class HomeScreen extends StatelessWidget {
                                         TextButton(
                                           onPressed: () {
                                             /// delete operations
-                                            /*context
-                                                .read<NoteProvider>()
-                                                .deleteNote(currData.note_Id);*/
+                                            context
+                                                .read<NoteCubit>()
+                                                .deleteNote(currData.note_Id);
                                             Navigator.pop(context);
                                           },
                                           child: const Text("Yes"),

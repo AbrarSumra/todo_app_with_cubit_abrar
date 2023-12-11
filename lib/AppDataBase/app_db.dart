@@ -64,9 +64,9 @@ class AppDataBase {
 
     var db = await getDB();
 
-    var rowEffected = await db.insert(NOTE_TABLE, newNote.toMap());
+    var rowsEffected = await db.insert(NOTE_TABLE, newNote.toMap());
 
-    return rowEffected > 0;
+    return rowsEffected > 0;
   }
 
   /// UPDATE Note
@@ -78,10 +78,13 @@ class AppDataBase {
   }
 
   /// DELETE Note
-  void deleteNote(int id) async {
+  Future<bool> deleteNote(int id) async {
     var db = await getDB();
 
-    db.delete(NOTE_TABLE, where: "$COLUMN_NOTE_ID =?", whereArgs: ["$id"]);
+    var rowsEffected = await db
+        .delete(NOTE_TABLE, where: "$COLUMN_NOTE_ID =?", whereArgs: ["$id"]);
+
+    return rowsEffected > 0;
   }
 
   /// FETCH Note
