@@ -74,7 +74,7 @@ class AppDataBase {
     var db = await getDB();
 
     db.update(NOTE_TABLE, updateNote.toMap(),
-        where: "$COLUMN_NOTE_ID =?", whereArgs: ["${updateNote.note_Id}"]);
+        where: "$COLUMN_NOTE_ID = ?", whereArgs: ["${updateNote.note_Id}"]);
   }
 
   /// DELETE Note

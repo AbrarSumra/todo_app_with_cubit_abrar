@@ -11,8 +11,11 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final TextEditingController titleController = TextEditingController();
-
   final TextEditingController descController = TextEditingController();
+
+  Future<void> _handleRefresh() async {
+    return await Future.delayed(Duration(seconds: 2));
+  }
 
   @override
   Widget build(BuildContext context) {
